@@ -8,12 +8,45 @@ class HomePage extends StatefulWidget {
 
 class HomeState extends State<HomePage> {
   List<GameButton> buttonsList;
+  var player1, player2, activePlayer;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     buttonsList = initList();
+    activePlayer = 1;
+  }
+
+  List<GameButton> initList() {
+    player1 = new List();
+    player2 = new List();
+    List<GameButton> list = new List();
+    list.add(new GameButton(id: 1));
+    list.add(new GameButton(id: 2));
+    list.add(new GameButton(id: 3));
+    list.add(new GameButton(id: 4));
+    list.add(new GameButton(id: 5));
+    list.add(new GameButton(id: 6));
+    list.add(new GameButton(id: 7));
+    list.add(new GameButton(id: 8));
+    list.add(new GameButton(id: 9));
+    return list;
+  }
+
+  void playGame(GameButton gb) {
+    setState(() {
+      if(activePlayer==1){
+        gb.bg=Colors.redAccent;
+        gb.text="O";
+        activePlayer=2;
+      } else{
+        gb.bg=Colors.black;
+        gb.text="X";
+        activePlayer=1;
+      }
+    });
+    gb.enabled = false;
   }
 
   @override
@@ -36,7 +69,9 @@ class HomeState extends State<HomePage> {
                   width: 80.0,
                   height: 80.0,
                   child: new RaisedButton(
-                    onPressed: null,
+                    onPressed: (buttonsList[i].enabled)
+                        ? () => playGame(buttonsList[i])
+                        : null,
                     padding: const EdgeInsets.all(10.0),
                     child: new Text(
                       buttonsList[i].text,
@@ -49,19 +84,5 @@ class HomeState extends State<HomePage> {
                 )),
       ),
     );
-  }
-
-  List<GameButton> initList() {
-    List<GameButton> list = new List();
-    list.add(new GameButton(id: 1));
-    list.add(new GameButton(id: 2));
-    list.add(new GameButton(id: 3));
-    list.add(new GameButton(id: 4));
-    list.add(new GameButton(id: 5));
-    list.add(new GameButton(id: 6));
-    list.add(new GameButton(id: 7));
-    list.add(new GameButton(id: 8));
-    list.add(new GameButton(id: 9));
-    return list;
   }
 }
