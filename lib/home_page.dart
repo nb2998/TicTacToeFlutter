@@ -81,21 +81,22 @@ class HomeState extends State<HomePage> {
         winner = 2;
     }
 
+    // TODO dialog not getting displayed
     if (winner == 1) {
       showDialog(
           context: context,
           builder: (_) => new CustomDialog(
-              "Player 1 Wins", "Want to reset the game?", resetGame()));
+              "Player 1 Wins", "Want to reset the game?", resetGame));
     } else if (winner == 2) {
       showDialog(
           context: context,
           builder: (_) => new CustomDialog(
-              "Player 2 Wins", "Want to reset the game?", resetGame()));
+              "Player 2 Wins", "Want to reset the game?", resetGame));
     } else if (count == sizeOfGame * sizeOfGame && winner == -1) {
       showDialog(
           context: context,
           builder: (_) => new CustomDialog(
-              "That's a draw!", "Want to reset the game?", resetGame()));
+              "That's a draw!", "Want to reset the game?", resetGame));
     }
   }
 
