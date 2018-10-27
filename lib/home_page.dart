@@ -62,10 +62,10 @@ class HomeState extends State<HomePage> {
     for (int i = 1; i <= sizeOfGame * sizeOfGame; i++) {
       if ((player1.contains(i) &&
               player1.contains(i + 1) &&
-              player1.contains(i + 2)) ||
+              player1.contains(i + 2) && (i%3==1)) ||
           (player1.contains(i) &&
               player1.contains(i + sizeOfGame) &&
-              player1.contains(i + 2 * sizeOfGame)) ||
+              player1.contains(i + 2 * sizeOfGame) && (i<4)) ||
           (player1.contains(1) && player1.contains(5) && player1.contains(9)) ||
           (player1.contains(3) && player1.contains(5) && player1.contains(7)))
         winner = 1;
